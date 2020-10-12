@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    function start(){
+        box_1x = Math.floor(Math.random()*100)+1;
+        box_1y = Math.floor(Math.random()*50)+1;
+        box_2x = box_1x +40;
+        box_2y = box_1y +40;
+    }
+    window.onload=function(){
+        document.onmousemove=function(c){
+            var cx = c.clientX;
+            var cy = c.clientY;
+            if(cx > box_1x && cx < box_2x && cy > box_1y && cy <box_2y){
+                alert('사각형을 찾은듯 하다');
+                location.reload();
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <button onclick="start();">game start</button>
+</body>
+</html>

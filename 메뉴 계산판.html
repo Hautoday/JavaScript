@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+        function calc(){
+            var d = new Date();
+            var price =0;
+            if(document.getElementById("p1").checked){
+                price += 7000;
+            }
+            if(document.getElementById("p2").checked){
+                price += 5000;
+            }
+            if(document.getElementById("p3").checked){
+                price += 8000;
+            }
+            if(document.getElementById("p4").checked){
+                price += 4000;
+            }
+            document.getElementById("result1").innerHTML = "주문날자:"+d.getFullYear()+"년"+(d.getMonth()+1)+"월"+d.getDate()+"일"+
+            d.getHours()+"시" +d.getMinutes()+"분" +d.getSeconds()+"초"+"GMT+09:00(대한민국 표준시)" +"<br/>"+"주문금액:"+price;
+        }
+       
+           
+            
+            </script>
+</head>
+<body>
+    <div>
+        <tr>상품 가격 선택<br></tr>
+        <td>
+            비빔밥  7000 <input type="checkbox" id="p1"><br>
+        </td>
+        <td>
+            불고기  5000 <input type="checkbox" id="p2"><br>
+        </td>
+        <td>
+            냉면  8000 <input type="checkbox" id="p3"><br>
+        </td>
+        <td>
+            짜짱밥  4000 <input type="checkbox" id="p4"><br>
+        </td>
+        <input type="button" value="계산" onclick="calc()">
+        
+    </div>
+    <p id="result1"></p>
+</body>
+</html>

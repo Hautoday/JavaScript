@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="test/css">
+    body{height:2000px;width: 2000px;
+    background: url("images/event_obj_gb_gif") 0 0 repect-x ;}
+    #wrap{position: fixed; width:80%;}
+    #key{ ime-mode:disabled;}
+    </style>
+    <script>
+    window.onload=function(){
+        var form1 = document.f1;
+        var form2 = document.f2;
+        var eventObj;
+        document.onmouseover=function(e){
+            eventObj=e?e:window.event;
+            var cx = eventObj.clientX;
+            var cy = eventObj.clientY;
+            form1.client_x.value=cx;
+            form1.client_y.value=cy;
+
+            var px = eventObj.pageX;
+            var py = eventObj.pageY;
+            form1.pg_x.value=px;
+            form1.pg_y.value=py;
+        }
+        form2.key.onkeydown=function(e){
+            eventObj=e?e:window.event;
+            form2.code.value=eventObj.keyCode;
+            if(eventObj.ctrlkey == true && eventObj.keycode==71){
+                alert("단축기 실행");
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>마우스 이벤트 객체 속성</h1>
+        <form action="a" method="get" name="f1">
+            <fieldset>
+                <legend>마우스 커서 위치 추척</legend>
+                <p>
+                    <label for="client_x">clientx:</label>
+                    <input type="text" name="client_x" id="client_x" />
+                </p>
+                <p>
+                    <label for="pg_x">pageX:</label>
+                    <input type="text" name="pg_x" id="pg_x"/>
+                </p>
+                <p>
+                    <label for="client_y">clienty:</label>
+                    <input type="text" name="client_y" id="client_y"/>
+                </p>
+                <p>
+                    <label for="pg_y">pageY:</label>
+                    <input type="text" name="pg_y" id="pg_y"/>
+                </p>
+            </fieldset>
+        </form>
+        <h1>키보드 이벤트 객체 속성</h1>
+        <form action="#" method="get" name="f2">
+            <fieldset>
+                <legend>키 코드 값</legend>
+                <p>
+                    <label for="key">입력 키보드:</label>
+                    <input type="text" name="key" id="key" />
+                    <label for="code">유니코드 값:</label>
+                    <input type="text" name="code" id="code"/>
+                </p>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
