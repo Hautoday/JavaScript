@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      function numberplus(x,y){
+        return document.write(x + y+"<br>");
+      }
+      function printNum(){
+        document.write("지역 변수 globalNum 선언 전의 globalNum의 값은 " + globalNum + "입니다.<br>"); // ①
+        var globalNum = 20;
+        document.write("지역 변수 globalNum 선언 후의 globalNum의 값은 " + globalNum + "입니다.<br>");
+        document.write('<br>');
+      }
+      function addNum(x,y,z){
+        if( x === undefined){
+          x = 0;
+        }
+        if( y === undefined){
+          y = 0;
+        }
+        if( z === undefined){
+          z = 0;
+        }
+        return document.write(x + y + z+'<br>');
+      }
+      </script>
+  </head>
+  <body>
+      <script type="text/javascript">
+        numberplus(100,100);
+        var globalnum = 200;
+        printNum();
+        addNum(1,2,3);
+        addNum(1,2);
+        addNum(1);
+        addNum();
+
+
+
+      </script>
+  </body>
+</html>
