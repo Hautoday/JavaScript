@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .dragLayer {
+        position: fixed;
+        background-color: grey;
+        top: 0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .dragLayer dt {
+        display: block;
+        height: 20px;
+        min-width: 100px;
+        background-color: red;
+        cursor: grab;
+    }
+</style>
+
+<body>
+    <dl class="dragLayer">
+        <dt>I'm Red</dt>
+        <dd>I'm Gray</dd>
+    </dl>
+</body>
+<script>
+
+    // 마우스의 기본상태를 나타냄 눌리지 않는 상태가 false
+    let isMouseDown = false;
+
+    // 마우스 X,Y 에 대한 좌표값 초기화변수 배열과 비슷하다.
+    let layerMousePosition = {
+        x: 0,
+        y: 0,
+    };
+    // 쿼리를 선택하여 변수에 대입.
+    const layer = document.querySelector(".dragLayer");
+
+    // 마우스가 눌렸을 때
+    layer.addEventListener("mousedown", (event) => {
+        // 눌린 순간에 마우스의 X값과 Y값을 변수에 대입.
+        layerMousePosition.x = event.clientX;
+        layerMousePosition.y = event.clientY;
+
+        // 마우스가 눌렸기때문에 해당 값은 True
+        isMouseDown = true;
+    });
+
+    // 마우스를 떘을 때
+    document.addEventListener("mouseup", (event) => {
+        // 마우스가 선택을 멈췄을때 기본상태인 false를 처리해준다.
+        isMouseDown = false;
+    });
+
+    // 마우스를 이동헀을때
+    document.addEventListener("mousemove", (event) => {
+        //  isMouseDown이 true, 이동중이라면 return
+        if (!isMouseDown) return;
+        // 이동중이 아니라면 아래 코드 실행.
+        // 새로만든 X,Y 좌표값변수에 눌린순간의 좌표값에 지금좌표값을 넣음.
+        const X = layerMousePosition.x - event.clientX;
+        const Y = layerMousePosition.y - event.clientY;
+
+        // 눌린순간의 좌표값에 지금좌표값을 넣음.
+        layerMousePosition.x = event.clientX;
+        layerMousePosition.y = event.clientY;
+
+        // 해당 좌표값을 style의 left,top에 좌표를 대입함.
+        layer.style.left = (layer.offsetLeft - X) + "px";
+        layer.style.top = (layer.offsetTop - Y) + "px";
+    });
+
+</script>
+
+</html>
